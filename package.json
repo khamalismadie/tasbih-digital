@@ -1,0 +1,27 @@
+{
+  "name": "react-ts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@react-native-community/slider": "^4.2.2",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "fbjs": "^3.0.4",
+    "material-ui": "^0.20.2",
+    "material-ui/core/styles": "*",
+    "null": "^2.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-native": "^0.68.2",
+    "react-tap-event-plugin": "^3.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "latest"
+  }
+}
