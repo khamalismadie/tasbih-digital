@@ -68,3 +68,12 @@ coverage
 # Misc
 *.pem
 Thumbs.db
+
+# Google Services
+google-services.json
+android/app/google-services.json
+ios/App/App/GoogleService-Info.plist
+
+# Signing / Keys
+key.properties
+signing.properties
