@@ -1,0 +1,24 @@
+{
+    "name": "Tasbih Digital",
+    "short_name": "Tasbih",
+    "description": "A beautiful digital prayer counter for tracking prayers, meditations, and daily affirmations",
+    "theme_color": "#0D9488",
+    "background_color": "#0F172A",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "lifestyle",
+        "utilities"
+    ],
+    "lang": "en"
+}
