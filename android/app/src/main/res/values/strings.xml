@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tasbih Digital</string>
+    <string name="title_activity_main">Tasbih Digital</string>
+    <string name="package_name">com.tasbih.digital</string>
+    <string name="custom_url_scheme">com.tasbih.digital</string>
+</resources>

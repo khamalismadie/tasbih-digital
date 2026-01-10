@@ -1,6 +1,6 @@
 # Digital Tasbih / Prayer Counter
 
-A beautiful, mobile-first digital tasbih (prayer counter) web app built with React, TypeScript, and Tailwind CSS.
+A beautiful, mobile-first digital tasbih (prayer counter) app built with React, TypeScript, and Tailwind CSS. Available as both PWA and native Android app with AdMob monetization.
 
 ## ✨ Features
 
@@ -12,12 +12,14 @@ A beautiful, mobile-first digital tasbih (prayer counter) web app built with Rea
 - **💾 Persistence**: Counts saved to localStorage
 - **📲 PWA Ready**: Installable on mobile devices
 - **♿ Accessible**: Keyboard navigation and screen reader support
+- **📢 AdMob Ads**: Banner ads for monetization (Android)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - npm or pnpm
+- Android Studio (for Android builds)
 
 ### Installation
 
@@ -35,6 +37,22 @@ npm run build
 npm run preview
 ```
 
+### Android Build
+
+```bash
+# Build web assets
+npm run build
+
+# Sync with Android project
+npx cap sync android
+
+# Open in Android Studio
+npx cap open android
+
+# Or run directly (if device connected)
+npx cap run android
+```
+
 ## 🛠️ Tech Stack
 
 - **Framework**: React 18 + TypeScript
@@ -43,6 +61,32 @@ npm run preview
 - **Build**: Vite
 - **Icons**: Lucide React
 - **PWA**: vite-plugin-pwa
+- **Native**: Capacitor
+- **Ads**: @capacitor-community/admob
+
+## 📱 AdMob Configuration
+
+⚠️ **Important**: AdMob credentials should NOT be committed to version control.
+
+### Setup Steps:
+
+1. **Create `.env` file** in project root (copy from `.env.example`):
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env`** with your AdMob credentials:
+   ```env
+   VITE_ADMOB_APP_ID=ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx
+   VITE_ADMOB_BANNER_AD_UNIT_ID=ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx
+   ```
+
+3. **For Android builds**, add to `android/local.properties`:
+   ```properties
+   ADMOB_APP_ID=ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx
+   ```
+
+The `.env` and `android/local.properties` files are gitignored and will not be committed.
 
 ## 📱 Usage
 

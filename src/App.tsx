@@ -10,12 +10,31 @@ import {
     TargetModal,
     AddCounterModal,
 } from '@/components';
+import { adMobService } from '@/services/admob';
 
 function App() {
     const settings = useCounterStore((s) => s.settings);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const [targetOpen, setTargetOpen] = useState(false);
     const [addCounterOpen, setAddCounterOpen] = useState(false);
+
+    // Initialize AdMob when running as native app
+    useEffect(() => {
+        const initAds = async () => {
+            if (adMobService.isNative()) {
+                await adMobService.initialize();
+                await adMobService.showBanner();
+            }
+        };
+        initAds();
+
+        // Cleanup on unmount
+        return () => {
+            if (adMobService.isNative()) {
+                adMobService.removeBanner();
+            }
+        };
+    }, []);
 
     // Apply theme class to document
     useEffect(() => {

@@ -1,1 +1,70 @@
+# Dependencies
 node_modules
+.pnpm-store
+
+# Build outputs
+dist
+dist-ssr
+*.local
+
+# Vite
+.vite
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Capacitor
+android/app/build
+android/.gradle
+android/build
+android/local.properties
+android/.idea
+android/*.iml
+android/app/*.iml
+android/capacitor-cordova-android-plugins/build
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+
+ios/App/Pods
+ios/App/DerivedData
+ios/App/*.xcworkspace/xcuserdata
+ios/App/*.xcodeproj/xcuserdata
+ios/App/*.xcodeproj/project.xcworkspace/xcuserdata
+
+# Keystore (NEVER commit these!)
+*.keystore
+*.jks
+keystore.properties
+release.keystore
+
+# Generated files
+android/app/src/main/res/drawable-*
+android/app/src/main/res/mipmap-*
+
+# Testing
+coverage
+
+# Misc
+*.pem
+Thumbs.db
