@@ -56,7 +56,7 @@ class AdMobService {
                     ? ADMOB_CONFIG.testBannerAdUnitId
                     : ADMOB_CONFIG.bannerAdUnitId,
                 adSize: BannerAdSize.ADAPTIVE_BANNER,
-                position: BannerAdPosition.TOP_CENTER,
+                position: BannerAdPosition.CENTER,
                 margin: 0,
                 isTesting: IS_DEVELOPMENT,
             };

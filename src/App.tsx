@@ -65,6 +65,10 @@ function App() {
 
             <main className="flex-1 flex flex-col justify-center items-center px-4 py-8">
                 <CounterDisplay />
+
+                {/* Spacer for AdMob Banner (Centered) */}
+                <div className="h-[60px] w-full" aria-hidden="true" />
+
                 <CounterButton />
                 <ControlPanel
                     onAddCounter={() => setAddCounterOpen(true)}

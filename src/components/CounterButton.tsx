@@ -15,41 +15,43 @@ export function CounterButton() {
 
     if (!counter) return null;
 
-    const handlePress = async (e: React.MouseEvent | React.TouchEvent) => {
-        // Resume audio context on first interaction (iOS requirement)
-        await resumeAudioContext();
+    const handlePress = (e: React.PointerEvent<HTMLButtonElement>) => {
+        // Prevent default browser behavior for touch actions (like scrolling/zooming)
+        // explicitly on the button press if needed, though CSS touch-action is better.
 
-        // Get ripple position
+        // 1. Resume audio context immediately (non-blocking)
+        resumeAudioContext().catch(() => { });
+
+        // 2. Visual Feedback Immediate Update
+        setIsPressed(true);
+
+        // Ripple Effect
         const button = buttonRef.current;
         if (button) {
             const rect = button.getBoundingClientRect();
-            const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-            const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-            const x = clientX - rect.left;
-            const y = clientY - rect.top;
+            // PointerEvent gives us clientX/Y directly compatible with mouse/touch
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
             const newRipple = { id: rippleIdRef.current++, x, y };
             setRipples((prev) => [...prev, newRipple]);
 
-            // Remove ripple after animation
             setTimeout(() => {
                 setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
             }, 600);
         }
 
-        setIsPressed(true);
-
-        // Increment counter
+        // 3. Increment Counter
         const prevCount = counter.count;
         increment();
 
-        // Haptic feedback
+        // 4. Haptic Feedback
         if (settings.vibration) {
             const isTargetReached = (prevCount + 1) % counter.target === 0;
             triggerHaptic(isTargetReached ? 'success' : 'tap');
         }
 
-        // Sound feedback
+        // 5. Sound Feedback
         if (settings.sound) {
             const isTargetReached = (prevCount + 1) % counter.target === 0;
             if (isTargetReached) {
@@ -68,11 +70,9 @@ export function CounterButton() {
         <div className="flex items-center justify-center py-8">
             <button
                 ref={buttonRef}
-                onMouseDown={handlePress}
-                onMouseUp={handleRelease}
-                onMouseLeave={handleRelease}
-                onTouchStart={handlePress}
-                onTouchEnd={handleRelease}
+                onPointerDown={handlePress}
+                onPointerUp={handleRelease}
+                onPointerLeave={handleRelease}
                 className={`
           relative w-48 h-48 rounded-full 
           bg-gradient-to-br from-primary-400 to-primary-600 
@@ -82,7 +82,7 @@ export function CounterButton() {
           transition-all duration-150 ease-out
           overflow-hidden
           focus:outline-none focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600
-          active:shadow-lg
+          active:shadow-lg touch-manipulation
           ${isPressed ? 'scale-95 shadow-lg' : 'scale-100 hover:scale-[1.02] animate-glow'}
         `}
                 style={{
@@ -102,7 +102,7 @@ export function CounterButton() {
                 ))}
 
                 {/* Button content */}
-                <span className="text-white text-2xl font-semibold select-none">
+                <span className="text-white text-2xl font-semibold select-none pointer-events-none">
                     Tap
                 </span>
             </button>
