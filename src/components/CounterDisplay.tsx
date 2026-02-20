@@ -19,7 +19,7 @@ export function CounterDisplay() {
             const timer = setTimeout(() => setIsAnimating(false), 200);
             return () => clearTimeout(timer);
         }
-    }, [counter?.count]);
+    }, [counter]);
 
     useEffect(() => {
         if (isEditing && inputRef.current) {
